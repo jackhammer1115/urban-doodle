@@ -1,0 +1,20 @@
+import praw
+
+reddit = praw.Reddit(client_id='2Upsz7uz3eSwAg',
+ 	client_secret='n8sgtXcr6hMQ3kY33Uxy_E3sk2I',
+ 	user_agent='<console:reddit_bot:0.0.1 (by /u/Jay111502)>',
+ 	username='FoundYourSauce_Bot',
+ 	password='jadomd3583')
+
+subreddit = reddit.subreddit('wowthanksimcured')
+
+keyphrase = 'sauce'
+
+reply = '¼ cup chili powder, 1 tablespoon flour, 2 tablespoons oil (olive, canola or avocado oil), 2 cups broth (chicken or vegetable), 1x6 ounces tomato paste, 1 teaspoon dried oregano, 1 teaspoon ground cumin, ¾ teaspoon salt, ½ teaspoon sugar.\n in a large skillet whisk flour and chili powder together until it’s combined'
+'In a large skillet mix flour and chili powder together. Whisk it together well until it''s throughly combined \n . Add oil, and whisk to combine . Heat on low for 2 minutes, or until fragrant \n . Turn the heat up to medium, add broth, tomato paste, oregano, and cumin, stirring to combine \n . Bring to a boil, reduce heat to low and cook uncovered, for 10 minutes, until sauce thickens and smooths out.\n Add salt and sugar, and taste for seasonings, adjusting to taste.'
+
+for comment in subreddit.stream.comments():
+		if keyphrase in comment.body:
+			word = comment.body.replace(keyphrase, '')
+			comment.reply(reply)
+			print('posted')

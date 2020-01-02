@@ -1,3 +1,6 @@
+
+$ heroku buildpacks:set heroku/python
+
 import praw
 
 reddit = praw.Reddit(client_id='2Upsz7uz3eSwAg',

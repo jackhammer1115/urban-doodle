@@ -18,3 +18,5 @@ for comment in subreddit.stream.comments():
 			word = comment.body.replace(keyphrase, '')
 			comment.reply(reply)
 			print('posted')
+
+$ heroku buildpacks:set heroku/python
